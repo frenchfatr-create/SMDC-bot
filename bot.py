@@ -927,6 +927,15 @@ async def reject(callback: CallbackQuery):
     await callback.answer("Отклонено.")
 
 
+@router.message(Command("myid"))
+async def myid(message: Message):
+    await message.answer(
+        "🆔 <b>Ваш Telegram ID:</b>\n"
+        f"<code>{message.from_user.id}</code>\n\n"
+        "Добавьте этот номер в ADMIN_IDS в файле .env."
+    )
+
+
 @router.message(Command("sell"))
 async def sell_command(message: Message, state: FSMContext):
     await state.clear()
